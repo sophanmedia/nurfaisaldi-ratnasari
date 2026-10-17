@@ -39,7 +39,6 @@
     </script>
 
     <style>
-        /* Custom Styles & Ghibli/Mandar Animations */
         body {
             font-family: 'Quicksand', sans-serif;
             background-color: #0d1322;
@@ -74,7 +73,6 @@
             z-index: 40;
         }
 
-        /* Floating Cloud Animation */
         @keyframes floatCloud {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100vw); }
@@ -101,26 +99,39 @@
             transform: translateY(-100%);
             transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
         }
+
+        /* Custom Scrollbar for Wishes List */
+        #wishes-list::-webkit-scrollbar {
+            width: 5px;
+        }
+        #wishes-list::-webkit-scrollbar-track {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+        }
+        #wishes-list::-webkit-scrollbar-thumb {
+            background: rgba(180, 83, 9, 0.4);
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased selection:bg-amber-200">
 
+    <!-- Floating Petal Particles Canvas -->
     <canvas id="particle-canvas"></canvas>
 
     <!-- Audio Player (Optimized with Reliable Direct Royalty-Free Audio Stream) -->
     <audio id="bg-music" loop preload="auto" crossorigin="anonymous">
-        <!-- Direct High-Reliability Audio Stream URL -->
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112188.mp3" type="audio/mpeg">
         <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-marriage-1111.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Floating Audio Control Button -->
-    <button id="music-toggle" class="hidden fixed bottom-6 right-6 z-50 bg-amber-500 hover:bg-amber-600 text-white p-3.5 rounded-full shadow-2xl transition duration-300 transform hover:scale-110 flex items-center justify-center border-2 border-amber-200">
+    <button id="music-toggle" aria-label="Toggle Musik" class="hidden fixed bottom-6 right-6 z-50 bg-amber-500 hover:bg-amber-600 text-white p-3.5 rounded-full shadow-2xl transition duration-300 transform hover:scale-110 flex items-center justify-center border-2 border-amber-200">
         <i id="music-icon" class="fas fa-music text-lg animate-spin" style="animation-duration: 5s;"></i>
     </button>
 
     <!-- Custom Modal Toast Message -->
-    <div id="toast-message" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-amber-900 text-amber-100 px-6 py-3 rounded-xl shadow-2xl border border-amber-400 text-xs font-semibold hidden transition-all duration-300 transform opacity-0">
+    <div id="toast-message" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-amber-950/95 text-amber-100 px-5 py-3 rounded-xl shadow-2xl border border-amber-400 text-xs font-semibold hidden transition-all duration-300 transform opacity-0 max-w-xs w-11/12 text-center">
         <p id="toast-text">Pesan berhasil dikirim!</p>
     </div>
 
@@ -144,7 +155,7 @@
             <!-- Middle Bride & Groom Title -->
             <div class="z-10 my-auto py-6">
                 <h1 class="font-serif text-4xl text-amber-200 tracking-wide font-bold mb-2">Nurfaisaldi</h1>
-                <span class="font-serif text-2xl text-amber-400 italic block font-light my-1">&</span>
+                <span class="font-serif text-2xl text-amber-400 italic block font-light my-1">&amp;</span>
                 <h1 class="font-serif text-4xl text-amber-200 tracking-wide font-bold mb-4">Ratna Sari</h1>
                 <p class="text-sm font-medium text-slate-200 bg-black/30 backdrop-blur-md py-1.5 px-4 rounded-full inline-block border border-amber-500/30">
                     Minggu, 25 Oktober 2026
@@ -157,13 +168,12 @@
                 <div class="bg-amber-950/40 border border-amber-400/40 rounded-xl p-3 mb-6 backdrop-blur-sm">
                     <span id="guest-name" class="text-lg font-semibold text-amber-200 block">Tamu Undangan</span>
                 </div>
-                <button onclick="openInvitation()" class="gold-glow w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-amber-950 font-bold py-3.5 px-6 rounded-xl shadow-lg transition duration-300 flex items-center justify-center space-x-2 text-sm tracking-wide">
+                <button onclick="openInvitation()" class="gold-glow w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-amber-950 font-bold py-3.5 px-6 rounded-xl shadow-lg transition duration-300 flex items-center justify-center space-x-2 text-sm tracking-wide cursor-pointer">
                     <i class="fas fa-envelope-open text-base"></i>
                     <span>Buka Undangan</span>
                 </button>
             </div>
         </div>
-
 
         <!-- MAIN CONTENT -->
         <div id="main-content" class="px-4 py-8 space-y-10 relative">
@@ -203,7 +213,7 @@
                 <!-- Separator & -->
                 <div class="flex items-center justify-center space-x-3 my-1">
                     <div class="h-px w-12 bg-amber-400"></div>
-                    <span class="font-serif italic text-2xl text-amber-600 font-bold">&</span>
+                    <span class="font-serif italic text-2xl text-amber-600 font-bold">&amp;</span>
                     <div class="h-px w-12 bg-amber-400"></div>
                 </div>
 
@@ -217,12 +227,12 @@
             <section class="ghibli-card mandar-border rounded-2xl p-6 text-center space-y-6">
                 <div class="border-b border-amber-200 pb-3">
                     <i class="far fa-calendar-alt text-2xl text-amber-700 mb-1"></i>
-                    <h3 class="font-serif text-xl font-bold text-amber-900">Waktu & Tempat Acara</h3>
+                    <h3 class="font-serif text-xl font-bold text-amber-900">Waktu &amp; Tempat Acara</h3>
                 </div>
 
                 <!-- Date display -->
                 <div class="bg-amber-100/80 rounded-xl p-4 border border-amber-300 space-y-1">
-                    <p class="text-xs uppercase tracking-widest text-amber-800 font-semibold">Hari & Tanggal</p>
+                    <p class="text-xs uppercase tracking-widest text-amber-800 font-semibold">Hari &amp; Tanggal</p>
                     <p class="font-serif text-xl font-bold text-amber-950">Minggu, 25 Oktober 2026</p>
                     <p class="text-xs text-gray-600 pt-1">Pukul 09.00 WITA - Selesai</p>
                 </div>
@@ -273,15 +283,36 @@
                 </div>
             </section>
 
-            <!-- SECTION 5: FORM KONFIRMASI KEHADIRAN & UCAPAN -->
+            <!-- SECTION 5: FORM KONFIRMASI KEHADIRAN & UCAPAN (TERHUBUNG KE FIREBASE) -->
             <section class="ghibli-card mandar-border rounded-2xl p-6 space-y-5">
                 <div class="text-center">
                     <i class="fas fa-pen-nib text-2xl text-amber-700 mb-1"></i>
-                    <h3 class="font-serif text-xl font-bold text-amber-900">Konfirmasi Kehadiran & Doa</h3>
+                    <h3 class="font-serif text-xl font-bold text-amber-900">Konfirmasi Kehadiran &amp; Doa</h3>
                     <p class="text-xs text-gray-600 mt-1">Berikan doa restu dan konfirmasi kehadiran Anda</p>
+                    <!-- Indikator Status Koneksi Firebase -->
+                    <div id="firebase-status-badge" class="inline-flex items-center space-x-1.5 mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800 border border-amber-300">
+                        <span id="firebase-status-dot" class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                        <span id="firebase-status-text">Menghubungkan ke Firebase...</span>
+                    </div>
                 </div>
 
-                <form id="rsvp-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <!-- Ringkasan Statistik Kehadiran Real-time -->
+                <div class="grid grid-cols-3 gap-2 text-center pt-1">
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-2">
+                        <span id="stat-hadir" class="block font-bold text-sm text-green-800">2</span>
+                        <span class="text-[10px] text-green-700 font-medium">Hadir</span>
+                    </div>
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-2">
+                        <span id="stat-ragu" class="block font-bold text-sm text-yellow-800">0</span>
+                        <span class="text-[10px] text-yellow-700 font-medium">Ragu-ragu</span>
+                    </div>
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-2">
+                        <span id="stat-tidak" class="block font-bold text-sm text-red-800">0</span>
+                        <span class="text-[10px] text-red-700 font-medium">Berhalangan</span>
+                    </div>
+                </div>
+
+                <form id="rsvp-form" class="space-y-4">
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-1">Nama Lengkap</label>
                         <input type="text" id="form-name" required placeholder="Masukkan nama Anda" class="w-full text-xs p-3 rounded-lg border border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white">
@@ -297,23 +328,25 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-gray-700 mb-1">Ucapan & Doa Restu</label>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Ucapan &amp; Doa Restu</label>
                         <textarea id="form-message" rows="3" required placeholder="Tulis ucapan atau doa Anda..." class="w-full text-xs p-3 rounded-lg border border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-amber-800 hover:bg-amber-900 text-white font-bold py-3 px-4 rounded-lg shadow text-xs transition duration-300">
-                        Kirim Ucapan & Konfirmasi
+                    <button type="submit" id="submit-btn" class="w-full bg-amber-800 hover:bg-amber-900 disabled:opacity-60 text-white font-bold py-3 px-4 rounded-lg shadow text-xs transition duration-300 flex items-center justify-center space-x-2 cursor-pointer">
+                        <i id="submit-icon" class="fas fa-paper-plane"></i>
+                        <span id="submit-text">Kirim Ucapan &amp; Konfirmasi</span>
                     </button>
                 </form>
 
                 <!-- List Ucapan -->
                 <div class="pt-4 border-t border-amber-200">
                     <h4 class="text-xs font-bold text-amber-900 mb-3 flex items-center justify-between">
-                        <span>Ucapan & Doa Restu</span>
+                        <span>Ucapan &amp; Doa Restu</span>
                         <span id="wishes-count" class="bg-amber-200 text-amber-900 text-[10px] px-2 py-0.5 rounded-full font-bold">2</span>
                     </h4>
                     
-                    <div id="wishes-list" class="space-y-3 max-h-60 overflow-y-auto pr-1 text-xs">
+                    <div id="wishes-list" class="space-y-3 max-h-64 overflow-y-auto pr-1 text-xs">
+                        <!-- Default wishes before Firestore loads or when collection is empty -->
                         <div class="bg-white/80 p-3 rounded-lg border border-amber-200 shadow-sm">
                             <div class="flex justify-between items-center mb-1">
                                 <span class="font-bold text-amber-900">Keluarga Mapilli</span>
@@ -343,15 +376,15 @@
 
                 <div class="pt-4 border-t border-amber-200">
                     <p class="text-[10px] text-gray-500">Kami yang berbahagia,</p>
-                    <p class="font-serif text-base font-bold text-amber-900 mt-1">Nurfaisaldi & Ratna Sari</p>
+                    <p class="font-serif text-base font-bold text-amber-900 mt-1">Nurfaisaldi &amp; Ratna Sari</p>
                     <p class="text-[10px] text-gray-500 mt-0.5">Beserta Keluarga Besar</p>
                 </div>
             </section>
 
             <!-- FOOTER -->
             <footer class="text-center py-4 text-amber-200/60 text-[10px]">
-                <p>&copy; 2026 Undangan Digital Nurfaisaldi & Ratna Sari</p>
-                <p class="mt-1">Dibuat khusus dengan Nuansa Mandar & Sentuhan Ghibli</p>
+                <p>&copy; 2026 Undangan Digital Nurfaisaldi &amp; Ratna Sari</p>
+                <p class="mt-1">Dibuat khusus dengan Nuansa Mandar &amp; Sentuhan Ghibli</p>
             </footer>
 
         </div>
@@ -363,23 +396,26 @@
             const urlParams = new URLSearchParams(window.location.search);
             const toParam = urlParams.get('to') || urlParams.get('u');
             if (toParam) {
-                document.getElementById('guest-name').innerText = decodeURIComponent(toParam);
+                const decodedName = decodeURIComponent(toParam);
+                document.getElementById('guest-name').innerText = decodedName;
+                const formName = document.getElementById('form-name');
+                if (formName) formName.value = decodedName;
             }
         });
 
-        // Open Invitation Function with robust Web Audio/HTML5 Audio Playback
+        let isPlaying = false;
+        const musicBtn = document.getElementById('music-toggle');
+        const musicIcon = document.getElementById('music-icon');
+        const audio = document.getElementById('bg-music');
+
+        // Open Invitation Function with Web Audio/HTML5 Audio Playback
         function openInvitation() {
             const cover = document.getElementById('cover-overlay');
-            const musicBtn = document.getElementById('music-toggle');
-            const musicIcon = document.getElementById('music-icon');
-            const audio = document.getElementById('bg-music');
-
             cover.classList.add('cover-slide-up');
             musicBtn.classList.remove('hidden');
 
             if (audio) {
                 audio.volume = 0.8;
-                // Force play triggered by user interaction (click event)
                 const playPromise = audio.play();
                 
                 if (playPromise !== undefined) {
@@ -390,21 +426,15 @@
                         console.warn("Autoplay blocked or stream issue:", error);
                         isPlaying = false;
                         musicIcon.className = "fas fa-volume-mute text-lg";
-                        showToast("Ketuk tombol musik di kanan bawah jika audio tidak langsung berputar.");
+                        window.showToast("Ketuk tombol musik di kanan bawah jika audio tidak langsung berputar.");
                     });
                 }
             }
 
-            // Smooth scroll top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Music Toggle Logic
-        const musicBtn = document.getElementById('music-toggle');
-        const musicIcon = document.getElementById('music-icon');
-        const audio = document.getElementById('bg-music');
-        let isPlaying = false;
-
         musicBtn.addEventListener('click', () => {
             if (isPlaying) {
                 audio.pause();
@@ -420,7 +450,7 @@
             }
         });
 
-        // Countdown Timer Logic (Target: Oct 25, 2026)
+        // Countdown Timer Logic (Target: Oct 25, 2026 09:00:00)
         const eventDate = new Date("October 25, 2026 09:00:00").getTime();
 
         function updateCountdown() {
@@ -447,7 +477,7 @@
         updateCountdown();
 
         // Helper Toast Notification (Replacing alert)
-        function showToast(message) {
+        window.showToast = function(message) {
             const toast = document.getElementById('toast-message');
             const toastText = document.getElementById('toast-text');
             toastText.innerText = message;
@@ -464,47 +494,11 @@
                 setTimeout(() => {
                     toast.classList.add('hidden');
                 }, 300);
-            }, 3500);
-        }
+            }, 3800);
+        };
 
-        // RSVP Form Submission Handler
-        let wishCount = 2;
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('form-name').value;
-            const status = document.getElementById('form-status').value;
-            const message = document.getElementById('form-message').value;
-
-            const wishesList = document.getElementById('wishes-list');
-            
-            let badgeClass = "bg-green-100 text-green-800";
-            if (status === "Tidak Hadir") badgeClass = "bg-red-100 text-red-800";
-            if (status === "Ragu-ragu") badgeClass = "bg-yellow-100 text-yellow-800";
-
-            const newWish = document.createElement('div');
-            newWish.className = "bg-white/80 p-3 rounded-lg border border-amber-200 shadow-sm transition transform duration-300 animate-fadeIn";
-            newWish.innerHTML = `
-                <div class="flex justify-between items-center mb-1">
-                    <span class="font-bold text-amber-900">${escapeHtml(name)}</span>
-                    <span class="text-[10px] ${badgeClass} px-1.5 py-0.5 rounded font-medium">${escapeHtml(status)}</span>
-                </div>
-                <p class="text-gray-700 text-[11px]">${escapeHtml(message)}</p>
-            `;
-
-            wishesList.prepend(newWish);
-
-            wishCount++;
-            document.getElementById('wishes-count').innerText = wishCount;
-
-            document.getElementById('form-name').value = '';
-            document.getElementById('form-message').value = '';
-
-            showToast("Terima kasih atas konfirmasi dan ucapan doa Anda!");
-        }
-
-        function escapeHtml(text) {
-            return text.replace(/[&<>"']/g, function(m) {
+        window.escapeHtml = function(text) {
+            return String(text || '').replace(/[&<>"']/g, function(m) {
                 return {
                     '&': '&amp;',
                     '<': '&lt;',
@@ -513,9 +507,8 @@
                     "'": '&#039;'
                 }[m];
             });
-        }
+        };
 
-        // Ghibli Floating Canvas Particles
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -532,6 +525,7 @@
         class Particle {
             constructor() {
                 this.reset();
+                this.y = Math.random() * canvas.height;
             }
 
             reset() {
@@ -540,7 +534,9 @@
                 this.size = Math.random() * 4 + 2;
                 this.speedY = Math.random() * 1 + 0.5;
                 this.speedX = Math.random() * 0.8 - 0.4;
-                this.color = Math.random() > 0.5 ? 'rgba(212, 175, 55, ' + (Math.random() * 0.4 + 0.2) + ')' : 'rgba(255, 225, 180, ' + (Math.random() * 0.4 + 0.2) + ')';
+                this.color = Math.random() > 0.5
+                    ? 'rgba(212, 175, 55, ' + (Math.random() * 0.4 + 0.2) + ')'
+                    : 'rgba(255, 225, 180, ' + (Math.random() * 0.4 + 0.2) + ')';
                 this.rotation = Math.random() * Math.PI * 2;
                 this.rotationSpeed = Math.random() * 0.02 - 0.01;
             }
@@ -580,7 +576,188 @@
             requestAnimationFrame(animateParticles);
         }
 
-        animateParticles();
+        window.onload = function() {
+            animateParticles();
+        };
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { 
+            getFirestore, 
+            collection, 
+            addDoc, 
+            onSnapshot, 
+            query, 
+            orderBy, 
+            serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+        // Konfigurasi Firebase Resmi milik Anda (undangandigital-319db)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBPBGRHAW3wkjJbdJnHrRL8GifDjmeOMMo",
+            authDomain: "undangandigital-319db.firebaseapp.com",
+            projectId: "undangandigital-319db",
+            storageBucket: "undangandigital-319db.firebasestorage.app",
+            messagingSenderId: "773979139564",
+            appId: "1:773979139564:web:4803b9b676679e75f3e4c9"
+        };
+
+        const rsvpForm = document.getElementById('rsvp-form');
+        const wishesList = document.getElementById('wishes-list');
+        const wishesCount = document.getElementById('wishes-count');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitText = document.getElementById('submit-text');
+        const statusBadge = document.getElementById('firebase-status-badge');
+        const statusDot = document.getElementById('firebase-status-dot');
+        const statusText = document.getElementById('firebase-status-text');
+
+        const statHadir = document.getElementById('stat-hadir');
+        const statRagu = document.getElementById('stat-ragu');
+        const statTidak = document.getElementById('stat-tidak');
+
+        // Data awal bawaan agar daftar ucapan tidak kosong saat pertama kali dibuat
+        const defaultWishes = [
+            {
+                name: "Keluarga Mapilli",
+                status: "Hadir",
+                message: "Selamat untuk Nurfaisaldi dan Ratna Sari. Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin."
+            },
+            {
+                name: "Sahabat TK",
+                status: "Hadir",
+                message: "Barakallahu lakuma wa baraka 'alaikuma wa jama'a bainakuma fii khair. Turut berbahagia!"
+            }
+        ];
+
+        let localFallbackWishes = [...defaultWishes];
+
+        function createWishCard(name, status, message, timeLabel = "") {
+            let badgeClass = "bg-green-100 text-green-800";
+            if (status === "Tidak Hadir") badgeClass = "bg-red-100 text-red-800";
+            if (status === "Ragu-ragu") badgeClass = "bg-yellow-100 text-yellow-800";
+
+            const card = document.createElement('div');
+            card.className = "bg-white/85 p-3 rounded-lg border border-amber-200 shadow-sm transition transform duration-300";
+            card.innerHTML = `
+                <div class="flex justify-between items-center mb-1">
+                    <span class="font-bold text-amber-900">${window.escapeHtml(name)}</span>
+                    <div class="flex items-center space-x-1.5">
+                        ${timeLabel ? `<span class="text-[9px] text-gray-400">${window.escapeHtml(timeLabel)}</span>` : ''}
+                        <span class="text-[10px] ${badgeClass} px-1.5 py-0.5 rounded font-medium">${window.escapeHtml(status)}</span>
+                    </div>
+                </div>
+                <p class="text-gray-700 text-[11px] leading-relaxed">${window.escapeHtml(message)}</p>
+            `;
+            return card;
+        }
+
+        function renderWishesArray(items) {
+            wishesList.innerHTML = "";
+            wishesCount.innerText = items.length;
+
+            let countHadir = 0;
+            let countRagu = 0;
+            let countTidak = 0;
+
+            items.forEach(item => {
+                if (item.status === "Hadir") countHadir++;
+                else if (item.status === "Ragu-ragu") countRagu++;
+                else if (item.status === "Tidak Hadir") countTidak++;
+
+                let timeStr = "";
+                if (item.createdAt && typeof item.createdAt.toDate === "function") {
+                    const d = item.createdAt.toDate();
+                    timeStr = d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
+                }
+
+                const card = createWishCard(item.name, item.status, item.message, timeStr);
+                wishesList.appendChild(card);
+            });
+
+            statHadir.innerText = countHadir;
+            statRagu.innerText = countRagu;
+            statTidak.innerText = countTidak;
+        }
+
+        function setConnectionBadge(state, label) {
+            statusText.innerText = label;
+            if (state === "connected") {
+                statusBadge.className = "inline-flex items-center space-x-1.5 mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-green-100 text-green-800 border border-green-300";
+                statusDot.className = "w-1.5 h-1.5 rounded-full bg-green-600";
+            } else if (state === "warning") {
+                statusBadge.className = "inline-flex items-center space-x-1.5 mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800 border border-amber-300";
+                statusDot.className = "w-1.5 h-1.5 rounded-full bg-amber-600";
+            }
+        }
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            const wishesRef = collection(db, "wishes");
+            const q = query(wishesRef, orderBy("createdAt", "desc"));
+
+            // Real-time listener ke koleksi "wishes" di Firestore
+            onSnapshot(q, (snapshot) => {
+                setConnectionBadge("connected", "Terhubung ke Cloud Firestore (Real-time)");
+
+                if (snapshot.empty) {
+                    // Tampilkan 2 ucapan bawaan jika database Firestore Anda masih kosong
+                    renderWishesArray(defaultWishes);
+                    return;
+                }
+
+                const liveWishes = [];
+                snapshot.forEach((doc) => {
+                    liveWishes.push(doc.data());
+                });
+                renderWishesArray(liveWishes);
+            }, (error) => {
+                console.warn("Firestore listener warning (pastikan Firestore sudah dibuat & Rules diizinkan):", error.message);
+                setConnectionBadge("warning", "Mode Pratinjau (Aktifkan Rules Firestore untuk Cloud Sync)");
+                renderWishesArray(localFallbackWishes);
+            });
+
+            // Handler saat tamu mengirim ucapan & konfirmasi kehadiran
+            rsvpForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('form-name').value.trim();
+                const status = document.getElementById('form-status').value;
+                const message = document.getElementById('form-message').value.trim();
+
+                if (!name || !message) return;
+
+                submitBtn.disabled = true;
+                submitText.innerText = "Menyimpan ke Cloud...";
+
+                try {
+                    await addDoc(wishesRef, {
+                        name: name,
+                        status: status,
+                        message: message,
+                        createdAt: serverTimestamp()
+                    });
+
+                    document.getElementById('form-message').value = '';
+                    window.showToast("Terima kasih! Konfirmasi & doa Anda telah tersimpan di Firebase.");
+                } catch (err) {
+                    console.warn("Firestore write fallback:", err.message);
+                    // Tetap tampilkan di layar secara instan meskipun Rules Firestore belum diatur
+                    localFallbackWishes.unshift({ name, status, message });
+                    renderWishesArray(localFallbackWishes);
+                    document.getElementById('form-message').value = '';
+                    window.showToast("Ucapan ditampilkan! Pastikan Rules Firestore Anda sudah diatur ke 'allow read, write: if true;' agar tersimpan permanen.");
+                } finally {
+                    submitBtn.disabled = false;
+                    submitText.innerText = "Kirim Ucapan & Konfirmasi";
+                }
+            });
+
+        } catch (err) {
+            console.error("Firebase init error:", err);
+            setConnectionBadge("warning", "Mode Lokal Aktif");
+        }
     </script>
 </body>
 </html>
