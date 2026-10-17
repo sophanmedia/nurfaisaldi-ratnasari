@@ -699,7 +699,7 @@
 
             // Real-time listener ke koleksi "wishes" di Firestore
             onSnapshot(q, (snapshot) => {
-                setConnectionBadge("connected", "Dilihat semua orang :)");
+                setConnectionBadge("connected", "Online");
 
                 if (snapshot.empty) {
                     // Tampilkan 2 ucapan bawaan jika database Firestore Anda masih kosong
